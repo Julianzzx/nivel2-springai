@@ -2,42 +2,20 @@ spring:
   application:
     name: nivel2-springai
 
-  # ─────────────────────────────────────────────────────────────────────
-  #  Configuración de Spring AI con GROQ
-  #
-  #  Groq usa la misma API que OpenAI (ChatCompletions), por eso usamos
-  #  spring-ai-starter-model-openai apuntando a la URL de Groq.
-  #
-  #  ANTES DE EJECUTAR:
-  #    1. Registrarse en https://console.groq.com (gratis, sin tarjeta)
-  #    2. Crear una API Key en el menú "API Keys"
-  #    3. En IntelliJ: Run → Edit Configurations → Environment Variables
-  #       Agregar: GROQ_API_KEY=gsk_...tu_key_aqui...
-  # ─────────────────────────────────────────────────────────────────────
   ai:
     openai:
-      # API Key de Groq leída desde variable de entorno (nunca en código)
       api-key: ${GROQ_API_KEY}
-
-      # URL base de Groq (reemplaza la de OpenAI)
       base-url: https://api.groq.com/openai
-
       chat:
         options:
-          # Llama 3.3 70B — modelo de alta calidad, completamente gratis en Groq
           model: llama-3.3-70b-versatile
-
-          # Temperatura: 0.0 = determinista, 1.0 = muy creativo
           temperature: 0.7
-
-          # Máximo de tokens en la respuesta
           max-tokens: 512
 
 server:
-  port: 8080
+  port: 8081
 
 logging:
   level:
-    # Activa logs de Spring AI para ver las llamadas al modelo
     org.springframework.ai: DEBUG
     com.universidad: INFO
